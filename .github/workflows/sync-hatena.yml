@@ -7,7 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: curl -L https://github.com | tar xz && sudo mv blogsync_linux_amd64/blogsync /usr/local/bin/
-      - run: blogsync push articles/*.md --config=blogsync.yaml
+      - name: Install blogsync
+        run: |
+          curl -L https://github.com | tar xz
+          sudo mv blogsync_linux_amd64/blogsync /usr/local/bin/
+      - name: Push to Hatena Blog
+        run: blogsync push articles/*.md --config=blogsync.yaml
         env:
           HATENA_API_PASSWORD: ${{ secrets.HATENA_API_PASSWORD }}
