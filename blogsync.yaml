@@ -1,0 +1,5 @@
+iphoneapple.hatenablog.com:
+  username: Toukyo
+  password: ${{ env.HATENA_API_PASSWORD }}
+default:
+  local_root: articles
